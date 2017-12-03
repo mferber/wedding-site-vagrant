@@ -49,7 +49,8 @@ if [ ! -h /var/www/html ];
 then
     rm -rf /var/www/html
     ln -fs /vagrant /var/www/html
-    sudo a2enmod rewrite # 2> /dev/null
+    sudo a2enmod rewrite
+    sudo a2enmod cgid
 
     # Set up our virtual host
 
@@ -70,10 +71,12 @@ then
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 
     <Directory /var/www/html>
-        Options -Indexes +FollowSymLinks    
+        Options -Indexes +FollowSymLinks +ExecCGI
         AllowOverride All
         Order allow,deny
         Allow from all
+        
+        AddHandler cgi-script .cgi
     </Directory>
 </VirtualHost>
 EOF
