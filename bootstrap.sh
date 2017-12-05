@@ -111,6 +111,7 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBROOTPASSWD"
 sudo apt-get install -y mysql-server # 2> /dev/null
 sudo apt-get install -y mysql-client # 2> /dev/null
+sudo apt-get install -y libmysqlclient-dev
 
 if [ ! -d /var/lib/mysql/$DBNAME ];
 then
@@ -134,3 +135,10 @@ then
 
     echo "CREATE TABLE $DBNAME.email ( ID int NOT NULL AUTO_INCREMENT, name VARCHAR(255), email VARCHAR(255), primary key (ID) )"  | mysql -uroot -p$DBROOTPASSWD
 fi
+
+echo ---
+echo --- CONFIGURE RUBY
+echo ---
+
+sudo apt-get install -y ruby-dev
+sudo gem install mysql2
