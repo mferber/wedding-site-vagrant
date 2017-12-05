@@ -132,6 +132,5 @@ then
     echo ---- Creating schema
     echo ----
 
-    echo "CREATE TABLE $DBNAME.email     ( name VARCHAR(255), email VARCHAR(255) )"  | mysql -uroot -p$DBROOTPASSWD
-
+    echo "CREATE TABLE $DBNAME.email ( ID int NOT NULL AUTO_INCREMENT, name VARCHAR(255), email VARCHAR(255), primary key (ID) )"  | mysql -uroot -p$DBROOTPASSWD
 fi
