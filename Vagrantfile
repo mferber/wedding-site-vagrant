@@ -18,7 +18,7 @@ VM_USER = 'vagrant'
 MAC_USER = 'matthias'
 
 # Host folder to sync
-HOST_PATH = '/Users/' + MAC_USER + '/Projects/Wedding-site/site'
+HOST_PATH = '/Users/' + MAC_USER + '/Projects/Wedding-site/jekyll/_site'
 
 # Where to sync to on Guest — 'vagrant' is the default user name
 GUEST_PATH = '/vagrant/'
